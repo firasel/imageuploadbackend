@@ -20,8 +20,8 @@ app.post("/upload/profile", async (req, res) => {
     res.send({
       status: true,
       message: "Image Upload Success",
-      viewUrl: `http://localhost:3001/profile/${img}`,
-      downloadUrl: `http://localhost:3001/download/profile/${img}`,
+      viewUrl: `https://imageuploadtest01.herokuapp.com/profile/${img}`,
+      downloadUrl: `https://imageuploadtest01.herokuapp.com/download/profile/${img}`,
     });
   } catch (error) {
     res.status(500).send(SendResponse(false, "Image Upload Not Success"));
@@ -65,8 +65,8 @@ app.post("/upload/cover", async (req, res) => {
     res.send({
       status: true,
       message: "Image Upload Success",
-      viewUrl: `http://localhost:3001/cover/${img}`,
-      downloadUrl: `http://localhost:3001/download/cover/${img}`,
+      viewUrl: `https://imageuploadtest01.herokuapp.com/cover/${img}`,
+      downloadUrl: `https://imageuploadtest01.herokuapp.com/download/cover/${img}`,
     });
   } catch (error) {
     res.status(500).send(SendResponse(false, "Image Upload Not Success"));

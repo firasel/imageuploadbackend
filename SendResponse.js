@@ -1,4 +1,4 @@
-const SendResponse = (status, message, data) => {
+const SendResponse = (status, message) => {
     return {
       status,
       message
