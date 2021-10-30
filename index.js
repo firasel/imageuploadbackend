@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const upload = require("express-fileupload");
+const sharp = require('sharp');
 const { Deta } = require("deta");
 const SendResponse = require("./SendResponse");
 const app = express();
@@ -16,7 +17,8 @@ app.post("/upload/profile", async (req, res) => {
   try {
     const name = req.files.file.name;
     const contents = req.files.file.data;
-    const img = await profile.put(name, { data: contents });
+    const minContents =await sharp(contents).jpeg({quality:80}).toBuffer().then(data=>data).catch(err=>new Error('Not compress'));
+    const img = await profile.put(name, { data: minContents });
     res.send({
       status: true,
       message: "Image Upload Success",
@@ -61,7 +63,8 @@ app.post("/upload/cover", async (req, res) => {
   try {
     const name = req.files.file.name;
     const contents = req.files.file.data;
-    const img = await cover.put(name, { data: contents });
+    const minContents =await sharp(contents).jpeg({quality:80}).toBuffer().then(data=>data).catch(err=>new Error('Not compress'));
+    const img = await cover.put(name, { data: minContents });
     res.send({
       status: true,
       message: "Image Upload Success",
